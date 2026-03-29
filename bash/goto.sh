@@ -144,22 +144,24 @@ Examples:
 EOF
 }
 
-case "$1" in
-  ls)
-    print_paths
-    ;;
-  add)
-    shift
-    add_path "$@"
-    ;;
-  rm)
-    shift
-    remove_path "$@"
-    ;;
-  help|-h|--help)
-    print_help
-    ;;
-  *)
-    go_to_path "$1"
-    ;;
-esac
+goto() {
+  case "$1" in
+    ls)
+      print_paths
+      ;;
+    add)
+      shift
+      add_path "$@"
+      ;;
+    rm)
+      shift
+      remove_path "$@"
+      ;;
+    help|-h|--help)
+      print_help
+      ;;
+    *)
+      go_to_path "$1"
+      ;;
+  esac
+}

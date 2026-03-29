@@ -4,7 +4,8 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASHRC="$HOME/.bashrc"
-GOTO_SCRIPT="$SCRIPT_DIR/bash"
+BASH_SCRIPT="$SCRIPT_DIR/bash"
+GIT_SCRIPT="$SCRIPT_DIR/git"
 
 START_MARK="# >>> good-stuff START <<<"
 END_MARK="# >>> good-stuff END <<<"
@@ -29,23 +30,21 @@ $START_MARK
 # Changes will be overwritten on next setup.
 
 # Bash utility functions
-goto() {
-  source "$GOTO_SCRIPT/goto.sh" "\$@"
-}
-reload() {
-  source "$GOTO_SCRIPT/reload.sh" "\$@"
-}
+source "$BASH_SCRIPT/goto.sh" "\$@"
+source "$BASH_SCRIPT/reload.sh" "\$@"
 
-# Git aliases
-reload() {
-  source "$GOTO_SCRIPT/reload.sh" "\$@"
-}
+# Git utilities and aliases
+source "$GIT_SCRIPT/git-aliases.sh"
+source "$GIT_SCRIPT/gclear.sh"
 
+echo "good-stuff: loaded bash utilities and git aliases"
 $END_MARK
 EOF
 
 echo "Installed into ~/.bashrc"
-echo " + goto, more goto help"
-echo " + reload, more reload help"
+echo " + goto, more: goto help"
+echo " + reload, more: reload help"
+echo " + git aliases, more: ghelp"
+echo " + gclear, more: gclear help"
 echo ""
 echo "Run: source ~/.bashrc"
