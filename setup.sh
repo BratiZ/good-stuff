@@ -30,13 +30,18 @@ $START_MARK
 # Changes will be overwritten on next setup.
 
 # Bash utility functions
-source "$BASH_SCRIPT/goto.sh" "\$@"
-source "$BASH_SCRIPT/reload.sh" "\$@"
+goto() {
+  source "$BASH_SCRIPT/goto.sh" "\$@"
+}
+reload() {
+  source "$BASH_SCRIPT/reload.sh" "\$@"
+}
 
 # Git utilities and aliases
 source "$GIT_SCRIPT/git-aliases.sh"
-source "$GIT_SCRIPT/gclear.sh"
-
+gclear() {
+  source "$GIT_SCRIPT/gclear.sh"
+}
 echo "good-stuff: loaded bash utilities and git aliases"
 $END_MARK
 EOF

@@ -15,23 +15,21 @@ Examples:
 EOF
 }
 
-reload() {
-  case "$1" in
-    "" )
-      if [ ! -f "$HOME/.bashrc" ]; then
-        echo "no ~/.bashrc found"
-        return
-      fi
-
-      source "$HOME/.bashrc"
-      ;;
-    help|-h|--help)
-      print_help
-      ;;
-    *)
-      echo "unknown option: $1"
-      print_help
+case "$1" in
+  "" )
+    if [ ! -f "$HOME/.bashrc" ]; then
+      echo "no ~/.bashrc found"
       return
-      ;;
-  esac
-}
+    fi
+
+    source "$HOME/.bashrc"
+    ;;
+  help|-h|--help)
+    print_help
+    ;;
+  *)
+    echo "unknown option: $1"
+    print_help
+    return
+    ;;
+esac
